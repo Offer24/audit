@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تقرير التدقيق الاستراتيجي الشامل - FLUXIA 2025</title>
+    <style>
+        :root {
+            --royal-blue: #002366;
+            --gold: #C5A059;
+            --admin-gray: #343A40;
+            --light-gray: #F8F9FA;
+            --white: #FFFFFF;
+            --success: #28A745;
+            --danger: #DC3545;
+            --warning: #FFC107;
+            --shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #ECEFF1;
+            color: var(--admin-gray);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 50px;
+            box-shadow: var(--shadow);
+            border-top: 12px solid var(--royal-blue);
+            border-bottom: 12px solid var(--gold);
+            position: relative;
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 30px;
+            margin-bottom: 50px;
+        }
+
+        header h1 {
+            color: var(--royal-blue);
+            font-size: 2.8em;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        header .subtitle {
+            color: var(--gold);
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        .executive-summary {
+            background: var(--light-gray);
+            border-right: 6px solid var(--royal-blue);
+            padding: 25px;
+            margin-bottom: 40px;
+            font-style: italic;
+            font-size: 1.1em;
+            color: #2C3E50;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            color: var(--royal-blue);
+            font-size: 1.8em;
+            margin: 50px 0 25px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #EEE;
+        }
+
+        .section-title::before {
+            content: "";
+            width: 15px;
+            height: 30px;
+            background: var(--gold);
+            margin-left: 15px;
+            display: inline-block;
+        }
+
+        /* Scorecards */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .kpi-card {
+            background: linear-gradient(135deg, var(--royal-blue) 0%, #003399 100%);
+            color: var(--white);
+            padding: 30px 20px;
+            border-radius: 4px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            border-bottom: 5px solid var(--gold);
+        }
+
+        .kpi-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .kpi-card h3 {
+            margin: 0;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            color: var(--gold);
+            letter-spacing: 1px;
+        }
+
+        .kpi-card .value {
+            font-size: 3em;
+            font-weight: 800;
+            margin: 15px 0;
+        }
+
+        .kpi-card .status-label {
+            font-size: 0.85em;
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+        }
+
+        /* Tables */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--white);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        th {
+            background-color: var(--royal-blue);
+            color: var(--gold);
+            padding: 18px;
+            text-align: right;
+            font-weight: 600;
+            border: 1px solid #001a4d;
+        }
+
+        td {
+            padding: 15px;
+            border: 1px solid #EEE;
+            color: var(--admin-gray);
+        }
+
+        tr:nth-child(even) {
+            background-color: #F9F9F9;
+        }
+
+        .badge {
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            font-weight: bold;
+            color: white;
+        }
+
+        .badge-success { background-color: var(--success); }
+        .badge-danger { background-color: var(--danger); }
+        .badge-warning { background-color: var(--warning); color: #000; }
+
+        /* Analysis Grid */
+        .analysis-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .analysis-box {
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #DDD;
+        }
+
+        .box-positive { border-right: 8px solid var(--success); background: #F0FFF4; }
+        .box-negative { border-right: 8px solid var(--danger); background: #FFF5F5; }
+
+        /* Roadmap List */
+        .roadmap-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .roadmap-item {
+            background: var(--light-gray);
+            padding: 15px;
+            border-right: 4px solid var(--gold);
+            display: flex;
+            align-items: center;
+        }
+
+        .roadmap-item::before {
+            content: "✦";
+            margin-left: 10px;
+            color: var(--royal-blue);
+            font-weight: bold;
+        }
+
+        /* Pricing Packages */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .price-card {
+            border: 1px solid #DDD;
+            padding: 40px 30px;
+            text-align: center;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            background: var(--white);
+            position: relative;
+        }
+
+        .price-card.featured {
+            border: 2px solid var(--gold);
+            transform: scale(1.05);
+            z-index: 10;
+            box-shadow: 0 15px 40px rgba(197, 160, 89, 0.2);
+        }
+
+        .featured-tag {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gold);
+            color: var(--white);
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+
+        .price-card h2 { color: var(--royal-blue); margin-bottom: 10px; }
+        .price-card .amount { font-size: 2.5em; font-weight: bold; color: var(--admin-gray); margin: 20px 0; }
+        .price-card .amount span { font-size: 0.4em; color: #888; text-decoration: line-through; }
+        
+        .feature-list { list-style: none; padding: 0; margin: 30px 0; text-align: right; }
+        .feature-list li { padding: 10px 0; border-bottom: 1px solid #EEE; font-size: 0.95em; }
+        .feature-list li::before { content: "✓"; color: var(--success); margin-left: 10px; font-weight: bold; }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background: var(--royal-blue);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .cta-btn:hover { background: var(--gold); }
+
+        footer {
+            margin-top: 80px;
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #EEE;
+            color: #777;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .analysis-container, .roadmap-list { grid-template-columns: 1fr; }
+            .main-container { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="main-container">
+    <header>
+        <h1>تقرير التدقيق الرقمي والتحليل الاستراتيجي</h1>
+        <div class="subtitle">الكيان المستهدف: FLUXIA DESIGN | إصدار 2025</div>
+        <p>تحليل شامل للأداء التقني، سلطة النطاق، وتنافسية محركات البحث</p>
+    </header>
+
+    <div class="executive-summary">
+        <strong>الملخص التنفيذي:</strong> يمتلك موقع FLUXIA بنية تحتية تقنية متطورة (Next.js/Shopify) تمنحه تفوقاً كاسحاً في سرعة الاستجابة وتجربة المستخدم. ومع ذلك، كشف التحليل عن "فجوة سلطة" حادة؛ حيث يعاني الموقع من عزلة رقمية نتيجة ضعف الأرشفة (3 صفحات فقط) وانعدام الروابط الخلفية المؤثرة. التقرير التالي يضع خارطة الطريق للانتقال من "السرعة التقنية" إلى "السيادة السوقية".
+    </div>
+
+    <h2 class="section-title">مؤشرات الأداء الرئيسية (KPIs)</h2>
+    <div class="kpi-grid">
+        <div class="kpi-card">
+            <h3>تقييم SEO العام</h3>
+            <div class="value">68/100</div>
+            <div class="status-label">يحتاج تحسين استراتيجي</div>
+        </div>
+        <div class="kpi-card">
+            <h3>سلطة النطاق (DA)</h3>
+            <div class="value">01</div>
+            <div class="status-label">مرحلة التأسيس الحرجة</div>
+        </div>
+        <div class="kpi-card">
+            <h3>أداء سطح المكتب</h3>
+            <div class="value">100%</div>
+            <div class="status-label">كفاءة تقنية قصوى</div>
+        </div>
+        <div class="kpi-card">
+            <h3>الصفحات المؤرشفة</h3>
+            <div class="value">03</div>
+            <div class="status-label">تغطية منخفضة جداً</div>
+        </div>
+    </div>
+
+    <h2 class="section-title">أولاً: تحليل كفاءة الأداء والسرعة (بصري ورقمي)</h2>
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>المؤشر التقني</th>
+                    <th>نسخة الجوال (Mobile)</th>
+                    <th>نسخة الحاسوب (Desktop)</th>
+                    <th>التقييم الإداري</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>الأداء العام (Performance)</td>
+                    <td>90%</td>
+                    <td>100%</td>
+                    <td><span class="badge badge-success">استثنائي</span></td>
+                </tr>
+                <tr>
+                    <td>رسم أكبر محتوى (LCP)</td>
+                    <td>2.0 ثانية</td>
+                    <td>0.6 ثانية</td>
+                    <td><span class="badge badge-success">مثالي</span></td>
+                </tr>
+                <tr>
+                    <td>إجمالي وقت الحظر (TBT)</td>
+                    <td>0 ملي ثانية</td>
+                    <td>0 ملي ثانية</td>
+                    <td><span class="badge badge-success">خالٍ من العوائق</span></td>
+                </tr>
+                <tr>
+                    <td>مؤشر السرعة (Speed Index)</td>
+                    <td>1.2 ثانية</td>
+                    <td>0.3 ثانية</td>
+                    <td><span class="badge badge-success">فائق السرعة</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2 class="section-title">ثانياً: تحليل الفجوات التقنية والعيوب الهيكلية</h2>
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>العنصر المحلل</th>
+                    <th>الوضع الحالي المستخلص</th>
+                    <th>التأثير الاستراتيجي</th>
+                    <th>مستوى الخطورة</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>خريطة الموقع (Sitemap)</td>
+                    <td>تحتوي على رابطين فقط (الرئيسية والمتجر)</td>
+                    <td>حجب مئات المنتجات عن عناكب البحث</td>
+                    <td><span class="badge badge-danger">كارثي</span></td>
+                </tr>
+                <tr>
+                    <td>ملف التوجيه (Robots.txt)</td>
+                    <td>مفقود أو غير مهيأ برمجياً</td>
+                    <td>زحف عشوائي وعدم سيطرة على الأرشفة</td>
+                    <td><span class="badge badge-danger">مرتفع</span></td>
+                </tr>
+                <tr>
+                    <td>الروابط الخلفية (Backlinks)</td>
+                    <td>10 روابط (100% NoFollow)</td>
+                    <td>انعدام الثقة الرقمية لدى محركات البحث</td>
+                    <td><span class="badge badge-danger">حرج</span></td>
+                </tr>
+                <tr>
+                    <td>البيانات المنظمة (Schema)</td>
+                    <td>غير مكتشفة / مفقودة للمنتجات</td>
+                    <td>غياب النجوم والأسعار في نتائج البحث</td>
+                    <td><span class="badge badge-warning">متوسط</span></td>
+                </tr>
+                <tr>
+                    <td>وصف الميتا (Meta Tags)</td>
+                    <td>طول زائد (169 حرف) وعناوين افتراضية</td>
+                    <td>انخفاض نسبة النقر (CTR) وظهور غير احترافي</td>
+                    <td><span class="badge badge-warning">متوسط</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2 class="section-title">ثالثاً: تحليل نقاط القوة والضعف (SWOT)</h2>
+    <div class="analysis-container">
+        <div class="analysis-box box-positive">
+            <h3 style="color: var(--success);">🟢 نقاط القوة والمميزات</h3>
+            <ul>
+                <li><strong>السرعة الفائقة:</strong> بنية Next.js توفر أداءً لا يضاهى.</li>
+                <li><strong>الأمان الرقمي:</strong> شهادة SSL فعالة وبروتوكول HTTP2 مفعل.</li>
+                <li><strong>تجربة المستخدم:</strong> واجهة UI جذابة وتوافق كامل مع الجوال.</li>
+                <li><strong>نظافة النطاق:</strong> درجة سبام (Spam Score) 1% فقط.</li>
+            </ul>
+        </div>
+        <div class="analysis-box box-negative">
+            <h3 style="color: var(--danger);">🔴 التحديات والعيوب القاتلة</h3>
+            <ul>
+                <li><strong>العزلة الرقمية:</strong> 99% من المنتجات غير مؤرشفة في جوجل.</li>
+                <li><strong>ضعف السلطة:</strong> DA 1 يجعل المنافسة مستحيلة حالياً.</li>
+                <li><strong>الهوية البرمجية:</strong> بقاء نصوص افتراضية مثل "Create Next App".</li>
+                <li><strong>غياب المحتوى:</strong> فقر شديد في الكلمات المفتاحية الشرائية.</li>
+            </ul>
+        </div>
+    </div>
+
+    <h2 class="section-title">رابعاً: خارطة الطريق للتحسين (15 خطوة استراتيجية)</h2>
+    <div class="roadmap-list">
+        <div class="roadmap-item">إصلاح شامل للسيو الداخلي (Title & Meta Description).</div>
+        <div class="roadmap-item">بناء ملف Sitemap ديناميكي يشمل كافة المنتجات.</div>
+        <div class="roadmap-item">ضبط الهيكلة الداخلية للوسوم (H1, H2, H3).</div>
+        <div class="roadmap-item">تفعيل Schema Markup للمنتجات لزيادة الـ CTR.</div>
+        <div class="roadmap-item">إجراء بحث معمق للكلمات المفتاحية (Keyword Research).</div>
+        <div class="roadmap-item">بناء استراتيجية Content Clusters للتخصص.</div>
+        <div class="roadmap-item">إنشاء 12 مقالاً احترافياً (Pillar Content) +1500 كلمة.</div>
+        <div class="roadmap-item">تحليل ثغرات المنافسين العضويين واستغلالها.</div>
+        <div class="roadmap-item">رفع Domain Rating (Ahrefs) إلى +30.</div>
+        <div class="roadmap-item">زيادة Domain Authority (Moz) إلى +30.</div>
+        <div class="roadmap-item">تطبيق استراتيجية التحويل الذهبية للدومينات.</div>
+        <div class="roadmap-item">إنشاء 100 باك لينك Redirect لتعزيز القوة.</div>
+        <div class="roadmap-item">بناء 50 باك لينك متنوع عالي الجودة (Contextual).</div>
+        <div class="roadmap-item">تأمين Guest Posts في مواقع ذات زيارات مليونية.</div>
+        <div class="roadmap-item">إعداد ملف توصيات لإدارة النمو المستدام.</div>
+    </div>
+
+    <h2 class="section-title">خامساً: عروض الاستثمار الرقمي (SEO Packages)</h2>
+    <div class="pricing-grid">
+        <!-- Package 1 -->
+        <div class="price-card">
+            <h2>باقة التأسيس</h2>
+            <p>الإسعافات الأولية للمواقع الحديثة</p>
+            <div class="amount">247$</div>
+            <ul class="feature-list">
+                <li>ضبط ملفات Robots & Sitemap</li>
+                <li>تحسين العناوين والأوصاف الرئيسية</li>
+                <li>معالجة أخطاء الأرشفة الأساسية</li>
+                <li>ضبط وسوم H1/H2 التقنية</li>
+            </ul>
+            <a href="#" class="cta-btn" style="background: var(--admin-gray);">ابدأ التأسيس</a>
+        </div>
+
+        <!-- Package 2 -->
+        <div class="price-card featured">
+            <div class="featured-tag">الأكثر طلباً وتحقيقاً للنتائج</div>
+            <h2>الهيمنة والسيطرة</h2>
+            <p>الحل المتكامل لتصدر نتائج البحث</p>
+            <div class="amount">697$ <span>1200$</span></div>
+            <ul class="feature-list">
+                <li><strong>جميع البنود الـ 15 المذكورة أعلاه</strong></li>
+                <li>4 جيست بوست في مواقع مليونية</li>
+                <li>كتابة 12 مقال حصري (1500 كلمة)</li>
+                <li>رفع الدومين أوثوريتي +30 (Moz)</li>
+                <li>حملة 150 باك لينك متنوع + Redirect</li>
+            </ul>
+            <a href="#" class="cta-btn">اشترك وسيطر الآن</a>
+        </div>
+
+        <!-- Package 3 -->
+        <div class="price-card">
+            <h2>النمو والانتشار</h2>
+            <p>مثالية للمحتوى والظهور العضوي</p>
+            <div class="amount">497$</div>
+            <ul class="feature-list">
+                <li>البنود من 1 إلى 7 (إصلاح شامل)</li>
+                <li>استخراج الكنوز من الكلمات المفتاحية</li>
+                <li>8 مقالات احترافية متوافقة مع السيو</li>
+                <li>خطة محتوى وهيكلة كاملة</li>
+            </ul>
+            <a href="#" class="cta-btn" style="background: var(--admin-gray);">اختار باقة النمو</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>تم إعداد هذا التحليل بواسطة وحدة التدقيق الرقمي - خبير تحليل البيانات (FLUXIA Audit Unit)</p>
+        <p>جميع الحقوق محفوظة &copy; 2025 | تقرير سري ومعتمد</p>
+    </footer>
+</div>
+
+</body>
+</html>
