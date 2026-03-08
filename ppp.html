@@ -1,0 +1,153 @@
+تم فتح المحادثة. رسالة واحدة مقروءة.
+
+تخطى إلى المحتوى
+استخدام Gmail مع قارئات الشاشة
+2 من 26,199
+Staging\ payform \ SEOCRAFT‏
+البريد الوارد
+Suzan Salem <suzan.salem@paysky.io‏>
+المرفقات
+1:14 م (قبل 8 ساعات)
+أنا، Ecomm، Customer
+
+يجب توخّي الحذر من هذه الرسالة.
+تحتوي هذه الرسالة على مرفق واحد أو أكثر يتعذّر على Gmail التحقّق منها وقد تكون ضارة. يُرجى عدم تنزيل المرفقات إلا إذا كان المُرسِل والرسالة موثوقًا بهما.
+
+الإبلاغ أنّها رسالة غير مرغوب فيهاتبدو آمنة
+Hello Dears,
+Please find the below test credentials and attached Plugin
+
+Merchant Name
+SEOCRAFT
+Dashboard URL
+https://red3.paysky.io:3001/Portal/
+Username & Password
+Sent to your mail: Sales700m@gmail.com
+OTP
+1111
+MID
+26764270786
+TID
+99735010
+Secret Key
+def6c0dacbf4d276c056a556964643d2
+
+
+Test Cards,
+
+Mastercard:
+5123 4567 8901 2346
+EXP
+01/32
+CVV
+100
+Visa Card:
+4440 0000 4220 0014
+EXP
+01/32
+CVV
+100
+
+
+
+
+
+
+
+ 
+
+Suzan Salem 
+Business Operations Supervisor
+|
+
+T: 16129
+
+|
+
+E: Suzan.Salem@paysky.io
+
+W: www.PaySky.io   |  A: Villa 29, Abdel Hady Rady Street, New Cairo, Cairo, Egypt
+
+    
+
+
+
+
+
+
+ مرفق واحد
+  •  تم فحصها من قِبل Gmail
+تم إيقاف تنزيل هذا المُرفق. انقر على "تبدو آمنة" في البانر أعلاه لتنزيل المُرفق إذا كنتَ تثق بهذه الرسالة.
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>PAYSKY - Sample Code to make Transaction using JS function</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src="https://red3.paysky.io:3011/LB/js/Lightbox.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script type="text/javascript">
+        var AmountTrxn = "";
+        var MID =  "";
+        var TID = "";
+        var Secret =  "" 
+        var MerchantReference = ""
+        var TrxDateTime = new Date().toGMTString();
+        var SecureHash = generateSecureHash(TrxDateTime, AmountTrxn, MerchantReference, MID, TID, Secret);
+        
+        console.warn("Please Don't Use Secret on JavaScript")
+        console.log("Generated SecureHash:", SecureHash);
+        
+        Lightbox.Checkout.configure = {
+            MID: MID,
+            TID: TID,
+            AmountTrxn: AmountTrxn,
+            SecureHash: SecureHash,
+            MerchantReference: MerchantReference,
+            TrxDateTime: TrxDateTime,
+            completeCallback: function (data) {
+                console.log('completed');
+                console.log(data);
+            },
+            errorCallback: function (error) {
+                alert(error);
+            },
+            cancelCallback: function () {
+                console.log('canceled');
+            }
+        };
+        
+        function showLightBox() {
+            Lightbox.Checkout.showLightbox();
+        }
+        
+        function generateSecureHash(time, amount, merchRef, merchantId, terminalId, secretKey) {
+            const hashing = `Amount=${amount}&DateTimeLocalTrxn=${time}&MerchantId=${merchantId}&MerchantReference=${merchRef}&TerminalId=${terminalId}`;
+            
+            console.log("Hashing string:", hashing);
+            console.log("TrxDateTime:", time);
+            
+            // Convert the hexadecimal secret key to a WordArray
+            const secretKeyWordArray = CryptoJS.enc.Hex.parse(secretKey);
+            
+            // Create an HMAC using SHA-256
+            const hmac = CryptoJS.HmacSHA256(hashing, secretKeyWordArray);
+            
+            // Convert the HMAC to a hexadecimal string
+            const hmacHex = hmac.toString(CryptoJS.enc.Hex);
+            const mac = hmacHex.toUpperCase();
+            
+            console.log("Generated MAC:", mac);
+            
+            // FIXED: Return the hash value
+            return mac;
+        }
+    </script>
+</head>
+<body>
+    <button onclick="showLightBox()">
+        Make Transaction
+    </button>
+</body>
+</html>
