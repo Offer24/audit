@@ -2,7 +2,7 @@
 (function () {
   'use strict';
 
-  var WA_NUMBER = '966500239888';
+  var WA_NUMBER = ''; var DEMO_MSG = 'نسخة تجريبية: الطلب والتواصل معطّلان في هذه المعاينة العامة. Demo preview: ordering and contact are disabled.';
   var SHOP_NAME = 'ورد الشيم';
 
   var PRODUCTS = [
@@ -135,14 +135,14 @@
     lines.push('', 'شكراً لكم 🌹');
 
     var url = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(lines.join('\n'));
-    window.open(url, '_blank');
+    alert(DEMO_MSG); /* DEMO_GUARD */
     return false;
   }
 
   function quickOrder(id) {
     var p = PRODUCTS.find(function (x) { return x.id === id; });
     var msg = 'السلام عليكم ' + SHOP_NAME + '🌷\nأستفسر عن: ' + p.name + ' (' + p.price + ' ر.س' + (p.priceFrom ? ' - يبدأ من' : '') + ')\nهل هو متوفر اليوم؟';
-    window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg), '_blank');
+    alert(DEMO_MSG); /* DEMO_GUARD */
   }
 
   /* ---------- render product cards ---------- */
