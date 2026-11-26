@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تقرير المراجعة التقنية بعد نقل DNS — متجر قطرة عسل</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
+body { font-family: 'Cairo', sans-serif; background-color: #f8fafc; color: #1e293b; }
+.status-ok { color: #15803d; }
+.status-warn { color: #b45309; }
+.status-bad { color: #b61313; }
+.card { background: #fff; border-radius: 1rem; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+table { border-collapse: collapse; width: 100%; }
+th, td { border: 1px solid #e2e8f0; padding: .6rem .8rem; text-align: right; font-size: .95rem; }
+th { background: #f1f5f9; font-weight: 700; }
+code { background:#f1f5f9; padding:.1rem .4rem; border-radius:.3rem; font-size:.85rem; direction:ltr; display:inline-block; }
+@media print { body { background: #fff; } .no-print { display:none; } }
+</style>
+</head>
+<body class="py-10 px-4">
+<div class="max-w-4xl mx-auto space-y-8">
+
+<!-- Header -->
+<div class="card p-8 border-t-8 border-green-700">
+  <p class="text-sm text-slate-500 font-semibold">تقرير فني — سري وخاص بالعميل</p>
+  <h1 class="text-3xl font-black mt-2">تقرير المراجعة التقنية الشاملة بعد نقل DNS وتفعيل SSL</h1>
+  <h2 class="text-xl font-bold text-green-800 mt-2">متجر قطرة عسل — qatretasal.com</h2>
+  <p class="mt-3 text-slate-600">نطاق المراجعة: التحقق الكامل من سلامة الموقع لمحركات البحث بعد نقل إدارة DNS إلى Cloudflare، وإعادة ربط الدومين بمنصة سلة، وتفعيل شهادة SSL، وإعداد التحويل الدائم 301 من www إلى الدومين الرئيسي.</p>
+  <p class="mt-2 text-sm text-slate-500">تاريخ الفحص: الخميس 26 نوفمبر 2026 — جميع الفحوصات أُجريت على الموقع الحي بطلبات HTTP حقيقية من عدة نقاط.</p>
+</div>
+
+<!-- Executive summary -->
+<div class="card p-8">
+  <h2 class="text-2xl font-black mb-4">الملخص التنفيذي</h2>
+  <div class="bg-green-50 border border-green-200 rounded-xl p-5">
+    <p class="text-lg font-bold text-green-900">النتيجة العامة: النقل تم بشكل صحيح وسليم ✅</p>
+    <p class="mt-2 text-slate-700">جميع النقاط الخمس المطلوب مراجعتها اجتازت الفحص الفعلي على الموقع الحي. التحويلات تعمل بقفزة واحدة وبدون أي حلقات تحويل، الشهادات سليمة، والوسوم الكنسية (Canonical) صحيحة، وخريطة الموقع وملف robots.txt سليمان ومُعلنان بشكل صحيح، والمدونة قابلة للزحف ومقالاتها مفهرسة. <strong>لا توجد أي مؤشرات على تأثير سلبي من النقل.</strong></p>
+  </div>
+  <table class="mt-6">
+    <tr><th>نقطة المراجعة</th><th>النتيجة</th><th>الحالة</th></tr>
+    <tr><td>التحويل الدائم 301 وعدم وجود Redirect Loops</td><td>قفزة واحدة 301 من كل النسخ إلى النسخة الرئيسية</td><td class="status-ok font-bold">✅ سليم</td></tr>
+    <tr><td>شهادة SSL وتأمين الاتصال</td><td>شهادتان ساريتان + تفعيل HSTS</td><td class="status-ok font-bold">✅ سليم</td></tr>
+    <tr><td>Canonical للمنتجات والتصنيفات</td><td>وسوم ذاتية صحيحة على الدومين الرئيسي</td><td class="status-ok font-bold">✅ سليم</td></tr>
+    <tr><td>Sitemap و robots.txt</td><td>كلاهما يعمل ويُرجع 200 ومرتبطان ببعضهما</td><td class="status-ok font-bold">✅ سليم</td></tr>
+    <tr><td>زحف المدونة وفهرسة المقالات</td><td>قابلة للزحف ومفهرسة، مع ملاحظة محتوى واحدة</td><td class="status-ok font-bold">✅ سليم مع ملاحظة ⚠️</td></tr>
+    <tr><td>تأثير النقل على الزحف والفهرسة (Google Search Console)</td><td>لا مؤشرات سلبية خارجيًا؛ التأكيد النهائي يتطلب بيانات Search Console</td><td class="status-warn font-bold">🟡 يحتاج تأكيد داخلي</td></tr>
+  </table>
+</div>
+
+<!-- 1. Redirects -->
+<div class="card p-8">
+  <h2 class="text-2xl font-black mb-3">1️⃣ التحويل الدائم 301 وسلاسل التحويل</h2>
+  <p class="text-slate-700 mb-4">تم اختبار النسخ الأربع الممكنة من الدومين (مع وبدون www، وعبر HTTP وHTTPS)، إضافة إلى صفحات داخلية عميقة (منتجات وتصنيفات) للتأكد من أن التحويل يحافظ على مسار الصفحة ولا يُسقط الزائر على الرئيسية.</p>
+  <table>
+    <tr><th>العنوان المطلوب</th><th>نوع التحويل</th><th>الوجهة النهائية</th><th>عدد القفزات</th></tr>
+    <tr><td><code>http://qatretasal.com</code></td><td>301 دائم</td><td><code>https://qatretasal.com/</code></td><td>1 ✅</td></tr>
+    <tr><td><code>http://www.qatretasal.com</code></td><td>301 دائم</td><td><code>https://qatretasal.com/</code></td><td>1 ✅</td></tr>
+    <tr><td><code>https://www.qatretasal.com</code></td><td>301 دائم</td><td><code>https://qatretasal.com/</code></td><td>1 ✅</td></tr>
+    <tr><td>صفحة منتج عبر www</td><td>301 دائم</td><td>نفس صفحة المنتج على الدومين الرئيسي</td><td>1 ✅</td></tr>
+  </table>
+  <div class="mt-4 bg-green-50 rounded-xl p-4 border border-green-200">
+    <p class="font-bold text-green-900">لماذا هذا ممتاز؟</p>
+    <ul class="list-disc pr-6 mt-2 text-slate-700 space-y-1">
+      <li>كل نسخة تتحول <strong>بقفزة واحدة فقط</strong> — لا توجد سلاسل تحويل (Chains) ولا حلقات (Loops) إطلاقًا.</li>
+      <li>التحويل من النوع <strong>301 (دائم)</strong>، وهو ما يُخبر جوجل بنقل قوة الصفحات وترتيبها كاملة إلى النسخة الجديدة.</li>
+      <li>التحويل <strong>يحافظ على مسار الصفحة</strong>: صفحات المنتجات والتصنيفات القديمة المحفوظة في نتائج البحث أو في روابط العملاء تصل لنفس الصفحة على النسخة الجديدة، فلا يضيع أي زائر ولا أي رابط خلفي.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 2. SSL -->
+<div class="card p-8">
+  <h2 class="text-2xl font-black mb-3">2️⃣ شهادة SSL وتأمين الاتصال</h2>
+  <table>
+    <tr><th>النطاق</th><th>جهة الإصدار</th><th>صالحة حتى</th><th>الحالة</th></tr>
+    <tr><td><code>qatretasal.com</code> (الرئيسي)</td><td>Google Trust Services (عبر منصة سلة)</td><td>13 يناير 2027</td><td class="status-ok font-bold">✅ سارية</td></tr>
+    <tr><td><code>www.qatretasal.com</code></td><td>Let's Encrypt (عبر Cloudflare)</td><td>19 فبراير 2027</td><td class="status-ok font-bold">✅ سارية</td></tr>
+  </table>
+  <ul class="list-disc pr-6 mt-4 text-slate-700 space-y-2">
+    <li>كلا الشهادتين ساريتان وتُجددان تلقائيًا (سلة للرئيسي وCloudflare لـ www)، فلا خطر من انتهاء مفاجئ بإذن الله.</li>
+    <li>تم تفعيل <strong>HSTS مع preload</strong> — المتصفحات تفرض HTTPS تلقائيًا حتى في أول زيارة، وهي إشارة أمان إيجابية لجوجل.</li>
+    <li>الاتصال يعمل عبر بروتوكول HTTP/2 الحديث، وسرعة استجابة الخادم ممتازة (أقل من 0.4 ثانية في قياسات الفحص).</li>
+  </ul>
+</div>
+
+<!-- 3. Canonical -->
+<div class="card p-8">
+  <h2 class="text-2xl font-black mb-3">3️⃣ مراجعة Canonical للمنتجات والتصنيفات</h2>
+  <p class="text-slate-700 mb-4">تم فحص الوسوم الكنسية على الصفحة الرئيسية وصفحات التصنيفات وصفحات المنتجات (بما فيها المنتجات ذات العناوين العربية):</p>
+  <table>
+    <tr><th>نوع الصفحة</th><th>وسم Canonical الموجود</th><th>التقييم</th></tr>
+    <tr><td>الرئيسية</td><td><code>https://qatretasal.com</code></td><td class="status-ok font-bold">✅ ذاتي وصحيح</td></tr>
+    <tr><td>صفحة تصنيف (مثال: العسل المستورد)</td><td>يشير لنفس صفحة التصنيف على الدومين الرئيسي</td><td class="status-ok font-bold">✅ ذاتي وصحيح</td></tr>
+    <tr><td>صفحات منتجات (عينة من المتجر)</td><td>كل منتج يشير لعنوانه هو على الدومين الرئيسي</td><td class="status-ok font-bold">✅ ذاتي وصحيح</td></tr>
+  </table>
+  <p class="mt-4 text-slate-700">النتيجة: <strong>لا يوجد أي محتوى مكرر بين نسخ الدومين الأربع</strong> — جوجل يفهم بوضوح أن النسخة المعتمدة الوحيدة هي <code>https://qatretasal.com</code>. كما تم التأكد من أن صفحات المنتجات ذات العناوين العربية تعمل بكود 200 بشكل طبيعي.</p>
+</div>
+
+<!-- 4. Sitemap & robots -->
+<div class="card p-8">
+  <h2 class="text-2xl font-black mb-3">4️⃣ خريطة الموقع Sitemap وملف robots.txt</h2>
+  <h3 class="font-bold text-lg mb-2">خريطة الموقع</h3>
+  <ul class="list-disc pr-6 text-slate-700 space-y-1 mb-4">
+    <li>العنوان <code>https://qatretasal.com/sitemap.xml</code> يعمل (كود 200) وبصيغة XML سليمة.</li>
+    <li>خريطة رئيسية تتفرع لخريطتين، تغطيان <strong>22 عنوانًا</strong>: الرئيسية + صفحات السياسات + 3 تصنيفات + المنتجات، بتواريخ تحديث حديثة.</li>
+    <li><strong>تم فحص كل العناوين الـ 22 واحدًا واحدًا: جميعها ترجع كود 200</strong> — لا يوجد في الخريطة أي صفحة ميتة أو محوّلة.</li>
+  </ul>
+  <h3 class="font-bold text-lg mb-2">ملف robots.txt</h3>
+  <ul class="list-disc pr-6 text-slate-700 space-y-1">
+    <li>الملف سليم ويعلن خريطة الموقع صراحة في أول سطر — أفضل ممارسة.</li>
+    <li>يسمح صراحة لعناكب <strong>Googlebot وBingbot وApplebot</strong> وغيرها بالزحف الكامل.</li>
+    <li>يمنع صفحات البحث الداخلي (<code>?q=</code>) من الفهرسة — صحيح، لأنها صفحات مكررة بلا قيمة.</li>
+    <li>يحظر عناكب أدوات التجسس التجارية (Ahrefs/Semrush وغيرها) — قرار متعمد لحماية استراتيجية المتجر من تحليل المنافسين، <strong>ولا يؤثر إطلاقًا على جوجل</strong>.</li>
+    <li>ملاحظة هامشية: يوجد <code>Crawl-delay: 10</code> — جوجل يتجاهله تمامًا، وبينج يلتزم به، ولا يسبب أي مشكلة.</li>
+  </ul>
+  <div class="mt-4 bg-green-50 rounded-xl p-4 border border-green-200">
+    <p>فحص إضافي: الصفحات غير الموجودة ترجع كود خطأ حقيقي (410) وليس صفحة وهمية بكود 200 — وهذا يمنع مشكلة "الأخطاء الوهمية Soft 404" التي تربك جوجل.</p>
+  </div>
+</div>
+
+<!-- 5. Blog -->
+<div class="card p-8">
+  <h2 class="text-2xl font-black mb-3">5️⃣ حالة الزحف والفهرسة للمدونة (blog.qatretasal.com)</h2>
+  <ul class="list-disc pr-6 text-slate-700 space-y-2">
+    <li>المدونة ما زالت تعمل بشكل طبيعي على منصة Blogger ولم تتأثر بنقل DNS — النطاق الفرعي يستجيب بكود 200.</li>
+    <li>ملف robots.txt الخاص بها سليم: يسمح بالزحف الكامل ويمنع فقط صفحات البحث الداخلي (سلوك Blogger القياسي الصحيح)، ويعلن خريطة موقع خاصة بالمدونة.</li>
+    <li>خريطة المدونة تعمل وتضم <strong>55 مقالًا</strong> منشورًا.</li>
+    <li>عينة المقالات المفحوصة: كل مقال يحمل وسم Canonical ذاتي صحيح، و<strong>لا يوجد أي وسم noindex</strong> يمنع الفهرسة، والعناوين سليمة.</li>
+    <li>فحص الفهرسة الفعلي عبر بحث جوجل (site:) أظهر <strong>مقالات المدونة وصفحات المتجر مفهرسة وتظهر في النتائج</strong> بشكل طبيعي، بما فيها مقالات حديثة.</li>
+  </ul>
+  <div class="mt-5 bg-amber-50 border border-amber-300 rounded-xl p-5">
+    <p class="font-bold text-amber-800">⚠️ ملاحظة تخص المقالات غير المفهرسة</p>
+    <p class="mt-2 text-slate-700">بخصوص المقالات التي لم تُفهرس بعد: من الفحص الخارجي لا يوجد أي مانع تقني (لا حظر في robots ولا noindex ولا مشكلة Canonical). السبب الأرجح — بناءً على مراجعة عناوين المقالات في خريطة الموقع — هو <strong>تشابه مواضيع بعض المقالات</strong>: توجد مجموعات مقالات متقاربة جدًا في المعنى (مثال: أربع مقالات نُشرت في نفس الفترة كلها حول المقارنة والخلط بين عسل السدر وعسل الطلح). في هذه الحالة جوجل يزحف للمقال لكنه يصنفه "زُحف إليه — غير مفهرس حاليًا" لأنه يراه قريبًا من مقال آخر موجود أصلًا.</p>
+    <p class="mt-2 text-slate-700"><strong>الحل:</strong> دمج المقالات شديدة التشابه في مقال ركيزة واحد شامل مع تحويل 301 للمقالات المدموجة، أو إعادة صياغة كل مقال ليستهدف زاوية وكلمة مفتاحية مختلفة تمامًا. التحديد الدقيق لقائمة هذه المقالات يتطلب تقرير "فهرسة الصفحات" من Search Console.</p>
+  </div>
+</div>
+
+<!-- 6. GSC -->
+<div class="card p-8 border-r-8 border-amber-500">
+  <h2 class="text-2xl font-black mb-3">🟡 ما تم التحقق منه مباشرة وما يحتاج Search Console</h2>
+  <div class="grid md:grid-cols-2 gap-4">
+    <div class="bg-green-50 rounded-xl p-4 border border-green-200">
+      <p class="font-bold text-green-900 mb-2">تم التحقق منه مباشرة على الموقع الحي ✅</p>
+      <ul class="list-disc pr-5 text-slate-700 space-y-1 text-sm">
+        <li>كل التحويلات 301 وعدد قفزاتها وسلامتها من الحلقات</li>
+        <li>صلاحية شهادتي SSL وتفعيل HSTS</li>
+        <li>وسوم Canonical على الرئيسية والتصنيفات والمنتجات</li>
+        <li>عمل Sitemap وrobots.txt وفحص كل عناوين الخريطة (22/22)</li>
+        <li>قابلية زحف المدونة وسلامة وسوم مقالاتها</li>
+        <li>ظهور صفحات المتجر ومقالات المدونة في نتائج البحث فعليًا</li>
+      </ul>
+    </div>
+    <div class="bg-amber-50 rounded-xl p-4 border border-amber-300">
+      <p class="font-bold text-amber-800 mb-2">يحتاج بيانات Search Console للتأكيد النهائي 🟡</p>
+      <ul class="list-disc pr-5 text-slate-700 space-y-1 text-sm">
+        <li>تقرير "فهرسة الصفحات": العدد الدقيق للصفحات المفهرسة قبل النقل وبعده</li>
+        <li>إحصائيات الزحف (Crawl Stats): التأكد أن نشاط Googlebot لم ينخفض بعد تغيير DNS</li>
+        <li>القائمة الدقيقة للمقالات غير المفهرسة وأسباب الاستبعاد المسجلة</li>
+        <li>أي أخطاء زحف مؤقتة سجلتها جوجل أيام النقل (عادة تختفي ذاتيًا خلال أيام)</li>
+      </ul>
+      <p class="mt-3 text-sm text-slate-700">بمجرد توفير صلاحية الاطلاع على حساب Search Console الخاص بالدومين، نستكمل هذه النقاط ونرفق لقطة محدثة بهذا التقرير إن شاء الله.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 7. Recommendations -->
+<div class="card p-8">
+  <h2 class="text-2xl font-black mb-3">التوصيات والخطوات التالية</h2>
+  <ol class="list-decimal pr-6 text-slate-700 space-y-2">
+    <li><strong>مراقبة Search Console خلال الأسبوعين القادمين:</strong> من الطبيعي أن تظهر تذبذبات بسيطة في الزحف بعد أي نقل DNS، وتستقر عادة خلال أيام. أي انخفاض مستمر بعد أسبوعين يستدعي تدخلًا فوريًا.</li>
+    <li><strong>التأكد أن الموقع مُضاف في Search Console على مستوى الدومين كاملًا (Domain Property)</strong> حتى تُحتسب بيانات www وغير-www والمدونة في مكان واحد.</li>
+    <li><strong>معالجة تشابه مقالات المدونة</strong> كما في القسم الخامس — هذا هو البند الوحيد الذي له أثر فعلي على الفهرسة حاليًا، وهو موجود من قبل النقل وليس ناتجًا عنه.</li>
+    <li><strong>إعادة إرسال خريطة الموقع</strong> في Search Console (رغم أنها سليمة) لتحفيز جوجل على إعادة الزحف بعد النقل.</li>
+    <li><strong>عدم إجراء أي تغييرات تقنية إضافية</strong> خلال فترة الاستقرار الحالية — البنية الحالية سليمة وأي تعديل متزامن قد يصعّب عزل سبب أي تغير في الأداء.</li>
+  </ol>
+</div>
+
+<!-- Signature -->
+<div class="card p-8 text-center border-b-8 border-green-700">
+  <p class="text-slate-700">إن أصبنا وأحسنا فمن الله تعالى وحده، وإن أخطأنا أو قصرنا فمن أنفسنا ومن الشيطان، ونسأل الله العظيم لنا ولكم التوفيق والسداد لكل خير.</p>
+  <p class="mt-6 text-xl font-black">أحمد عاشور</p>
+  <p class="text-slate-600 font-semibold">خبير السيو وتنمية المواقع والتسويق الإلكتروني</p>
+  <p class="text-sm text-slate-400 mt-1">26 نوفمبر 2026</p>
+</div>
+
+</div>
+</body>
+</html>
