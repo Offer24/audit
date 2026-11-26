@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://offer24.github.io/audit/sheam-flower/sitemap.xml
