@@ -1,6 +1,5 @@
-var DEMO_MSG = "نسخة تجريبية: الطلب والتواصل معطّلان في هذه المعاينة العامة. Demo preview: ordering and contact are disabled.";
 /* t2 «نسيم أخضر» — side-drawer nav with scrim + bottom-sheet cart. Event-delegation style. */
-const T2 = { wa: "", shop: "مؤسسة عسل بن طيران", key: "cart_bin_tairan_honey" };
+const T2 = { wa: "966558832068", shop: "مؤسسة عسل بن طيران", key: "cart_bin_tairan_honey" };
 const state = { cart: JSON.parse(localStorage.getItem(T2.key) || "[]") };
 const q = (s) => document.querySelector(s);
 

@@ -1,7 +1,6 @@
-var DEMO_MSG = "نسخة تجريبية: الطلب والتواصل معطّلان في هذه المعاينة العامة. Demo preview: ordering and contact are disabled.";
 /* t3 «صلابة» — fullscreen overlay nav + side cart drawer. Object-literal app style. */
 var App3 = {
-  wa: "", shop: "عربة الجوال للاتصالات", key: "cart_arabat_aljawwal_mobile",
+  wa: "966560065550", shop: "عربة الجوال للاتصالات", key: "cart_arabat_aljawwal_mobile",
   cart: [],
   init: function () {
     try { this.cart = JSON.parse(localStorage.getItem(this.key) || "[]"); } catch (e) { this.cart = []; }
@@ -73,7 +72,7 @@ var App3 = {
     });
     this.$("lbClose").addEventListener("click", function () { self.$("lightbox").classList.remove("open"); });
     this.$("lightbox").addEventListener("click", function (e) { if (e.target.id === "lightbox") e.target.classList.remove("open"); });
-    this.$("waFloat").addEventListener("click", function () { alert(DEMO_MSG); /* DEMO_GUARD */ });
+    this.$("waFloat").addEventListener("click", function () { window.open("https://wa.me/" + self.wa, "_blank"); });
   },
   toast: function (msg) {
     var t = this.$("toast");
@@ -88,7 +87,7 @@ var App3 = {
     msg += "\nالإجمالي التقديري: " + this.fmt(total) + "\nالاسم: " + this.$("custName").value.trim();
     var notes = this.$("custNotes").value.trim(); if (notes) msg += "\nملاحظات: " + notes;
     msg += "\n\n(الأسعار تقديرية وتؤكدونها عند الرد)";
-    alert(DEMO_MSG); /* DEMO_GUARD */
+    window.open("https://wa.me/" + this.wa + "?text=" + encodeURIComponent(msg), "_blank");
   }
 };
 App3.init();

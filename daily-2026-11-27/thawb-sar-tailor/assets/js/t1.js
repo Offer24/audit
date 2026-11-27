@@ -1,7 +1,6 @@
-var DEMO_MSG = "نسخة تجريبية: الطلب والتواصل معطّلان في هذه المعاينة العامة. Demo preview: ordering and contact are disabled.";
 /* t1 «ليل وذهب» — slide-down nav panel + side cart drawer. Classic function style. */
 (function () {
-  var WA_DEAD = \"\", SHOP = "ثوب سار للخياطة الرجالية", KEY = "cart_thawb_sar_tailor";
+  var WA = "966575404414", SHOP = "ثوب سار للخياطة الرجالية", KEY = "cart_thawb_sar_tailor";
   var cart = [];
   try { cart = JSON.parse(localStorage.getItem(KEY) || "[]"); } catch (e) {}
 
@@ -59,7 +58,7 @@ var DEMO_MSG = "نسخة تجريبية: الطلب والتواصل معطّل�
   });
   el("lbClose").addEventListener("click", function () { el("lightbox").classList.remove("open"); });
   el("lightbox").addEventListener("click", function (e) { if (e.target.id === "lightbox") e.target.classList.remove("open"); });
-  el("waFloat").addEventListener("click", function () { alert(DEMO_MSG); /* DEMO_GUARD */ });
+  el("waFloat").addEventListener("click", function () { window.open("https://wa.me/" + WA, "_blank"); });
 
   el("orderForm").addEventListener("submit", function (e) {
     e.preventDefault();
@@ -69,7 +68,7 @@ var DEMO_MSG = "نسخة تجريبية: الطلب والتواصل معطّل�
     msg += "\nالإجمالي التقديري: " + money(total) + "\nالاسم: " + el("custName").value.trim();
     var notes = el("custNotes").value.trim(); if (notes) msg += "\nملاحظات: " + notes;
     msg += "\n\n(الأسعار تقديرية وتؤكدونها عند الرد)";
-    alert(DEMO_MSG); /* DEMO_GUARD */
+    window.open("https://wa.me/" + WA + "?text=" + encodeURIComponent(msg), "_blank");
   });
   paint();
 })();

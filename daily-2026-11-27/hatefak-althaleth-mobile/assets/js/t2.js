@@ -1,6 +1,5 @@
-var DEMO_MSG = "نسخة تجريبية: الطلب والتواصل معطّلان في هذه المعاينة العامة. Demo preview: ordering and contact are disabled.";
 /* t2 «نسيم أخضر» — side-drawer nav with scrim + bottom-sheet cart. Event-delegation style. */
-const T2 = { wa: "", shop: "هاتفك الثالث للاتصالات", key: "cart_hatefak_althaleth_mobile" };
+const T2 = { wa: "966538880962", shop: "هاتفك الثالث للاتصالات", key: "cart_hatefak_althaleth_mobile" };
 const state = { cart: JSON.parse(localStorage.getItem(T2.key) || "[]") };
 const q = (s) => document.querySelector(s);
 
