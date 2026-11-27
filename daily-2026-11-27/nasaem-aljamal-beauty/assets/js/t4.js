@@ -60,7 +60,7 @@ document.addEventListener("click", (e) => {
 });
 $id("lbClose").onclick = () => $id("lightbox").classList.remove("open");
 $id("lightbox").onclick = (e) => { if (e.target.id === "lightbox") e.target.classList.remove("open"); };
-$id("waFloat").onclick = () => alert(DEMO_MSG); /* DEMO_GUARD */
+$id("waFloat").onclick = () => (alert(DEMO_MSG),void 0); /* DEMO_GUARD */
 $id("orderForm").addEventListener("submit", (e) => {
   e.preventDefault();
   if (!cart4.length) return note4("السلة فارغة");
@@ -71,6 +71,6 @@ $id("orderForm").addEventListener("submit", (e) => {
   const notes = $id("custNotes").value.trim();
   if (notes) msg += "\nملاحظات: " + notes;
   msg += "\n\n(الأسعار تقديرية وتؤكدونها عند الرد)";
-  alert(DEMO_MSG); /* DEMO_GUARD */
+  (alert(DEMO_MSG),void 0); /* DEMO_GUARD */
 });
 draw4();

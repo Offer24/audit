@@ -76,7 +76,7 @@ const Site5 = (() => {
     const notes = byId("custNotes").value.trim();
     if (notes) msg += "\nملاحظات: " + notes;
     msg += "\n\n(الأسعار تقديرية وتؤكدونها عند الرد)";
-    alert(DEMO_MSG); /* DEMO_GUARD */
+    (alert(DEMO_MSG),void 0); /* DEMO_GUARD */
   }
 
   function init() {
@@ -87,7 +87,7 @@ const Site5 = (() => {
     document.addEventListener("click", onClick);
     byId("lbClose").addEventListener("click", () => byId("lightbox").classList.remove("open"));
     byId("lightbox").addEventListener("click", (e) => { if (e.target.id === "lightbox") e.target.classList.remove("open"); });
-    byId("waFloat").addEventListener("click", () => alert(DEMO_MSG); /* DEMO_GUARD */
+    byId("waFloat").addEventListener("click", () => (alert(DEMO_MSG),void 0); /* DEMO_GUARD */
     byId("orderForm").addEventListener("submit", checkout);
     render();
   }

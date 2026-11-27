@@ -59,7 +59,7 @@ var DEMO_MSG = 'نسخة تجريبية: الطلب والتواصل معطّل�
   });
   el("lbClose").addEventListener("click", function () { el("lightbox").classList.remove("open"); });
   el("lightbox").addEventListener("click", function (e) { if (e.target.id === "lightbox") e.target.classList.remove("open"); });
-  el("waFloat").addEventListener("click", function () { alert(DEMO_MSG); /* DEMO_GUARD */ });
+  el("waFloat").addEventListener("click", function () { (alert(DEMO_MSG),void 0); /* DEMO_GUARD */ });
 
   el("orderForm").addEventListener("submit", function (e) {
     e.preventDefault();
@@ -69,7 +69,7 @@ var DEMO_MSG = 'نسخة تجريبية: الطلب والتواصل معطّل�
     msg += "\nالإجمالي التقديري: " + money(total) + "\nالاسم: " + el("custName").value.trim();
     var notes = el("custNotes").value.trim(); if (notes) msg += "\nملاحظات: " + notes;
     msg += "\n\n(الأسعار تقديرية وتؤكدونها عند الرد)";
-    alert(DEMO_MSG); /* DEMO_GUARD */
+    (alert(DEMO_MSG),void 0); /* DEMO_GUARD */
   });
   paint();
 })();
