@@ -1,0 +1,23 @@
+{
+  "slug": "almazadah-bakery",
+  "business": "المزادة بيكري",
+  "display": "المزادة بيكري",
+  "vertical": "مخبز",
+  "city": "نجران",
+  "theme": "t6",
+  "theme_name": "دفء الطين",
+  "place_id": "ChIJaXVm0-3r_hURDQIy3l1kC2I",
+  "maps_url": "https://www.google.com/maps/search/?api=1&query=%D8%A7%D9%84%D9%85%D8%B2%D8%A7%D8%AF%D8%A9+%D8%A8%D9%8A%D9%83%D8%B1%D9%8A&query_place_id=ChIJaXVm0-3r_hURDQIy3l1kC2I",
+  "phone": "+966 55 004 4120",
+  "wa": "966550044120",
+  "rating": 4.5,
+  "reviews": 987,
+  "photos": 8,
+  "hours_recorded": true,
+  "live_url": "https://offer24.github.io/audit/daily-2026-11-27/almazadah-bakery/",
+  "needs_owner_confirmation": [
+    "الأسعار التقديرية",
+    "تفاصيل التوصيل",
+    "الصياغات القانونية"
+  ]
+}

@@ -1,0 +1,43 @@
+/* base.css — functional layer (cart drawer, lightbox, toast). Visuals live in theme CSS. */
+*{margin:0;padding:0;box-sizing:border-box}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+body{font-family:'Tajawal',Tahoma,sans-serif;line-height:1.7}
+.container{width:min(1180px,92%);margin-inline:auto}
+.cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);opacity:0;pointer-events:none;transition:.3s;z-index:998}
+.cart-overlay.open{opacity:1;pointer-events:auto}
+.cart-drawer{position:fixed;top:0;bottom:0;left:0;width:min(420px,94vw);background:#fff;z-index:999;transform:translateX(-105%);transition:transform .35s ease;display:flex;flex-direction:column;box-shadow:4px 0 30px rgba(0,0,0,.2)}
+html[dir="rtl"] .cart-drawer{left:auto;right:0;transform:translateX(105%)}
+html[dir="rtl"] .cart-drawer.open,.cart-drawer.open{transform:none}
+.cart-head{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid #eee}
+.cart-close{background:none;border:0;font-size:20px;cursor:pointer}
+.cart-items{flex:1;overflow-y:auto;padding:14px 20px}
+.cart-empty{text-align:center;color:#999;padding:40px 0}
+.cart-item{display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid #f0f0f0}
+.cart-item img{width:64px;height:64px;object-fit:cover;border-radius:10px}
+.ci-body{flex:1}
+.ci-price{display:block;color:#888;font-size:13px}
+.qty-ctrl{display:inline-flex;gap:10px;align-items:center;margin-top:6px}
+.qty-ctrl button{width:26px;height:26px;border-radius:8px;border:1px solid #ddd;background:#fafafa;cursor:pointer}
+.ci-remove{background:none;border:0;cursor:pointer;font-size:16px}
+.cart-foot{border-top:1px solid #eee;padding:14px 20px}
+.cart-total{display:flex;justify-content:space-between;font-weight:800;margin-bottom:8px}
+.order-form label{display:block;font-size:13px;font-weight:700;margin:8px 0 4px}
+.order-form input,.order-form textarea{width:100%;padding:9px 12px;border:1px solid #ddd;border-radius:10px;font-family:inherit;font-size:14px}
+.order-form button{width:100%;margin-top:12px}
+.toast{position:fixed;bottom:90px;right:50%;transform:translateX(50%);background:#12100d;color:#fff;padding:10px 22px;border-radius:30px;font-size:14px;opacity:0;transition:.3s;z-index:1000;pointer-events:none}
+.toast.show{opacity:1}
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.88);display:none;align-items:center;justify-content:center;z-index:1001;cursor:zoom-out}
+.lightbox.open{display:flex}
+.lightbox img{max-width:92%;max-height:88%;border-radius:12px}
+.lb-close{position:absolute;top:18px;left:18px;background:rgba(255,255,255,.15);color:#fff;border:0;border-radius:50%;width:38px;height:38px;font-size:18px;cursor:pointer}
+.wa-float{position:fixed;bottom:22px;left:22px;z-index:900;width:58px;height:58px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 8px 22px rgba(37,211,102,.45)}
+.wa-float svg{width:30px;height:30px;fill:#fff}
+.wa-float .pulse{position:absolute;inset:0;border-radius:50%;background:#25d366;animation:pl 2s infinite;z-index:-1}
+@keyframes pl{0%{transform:scale(1);opacity:.6}100%{transform:scale(1.7);opacity:0}}
+.btn{display:inline-block;padding:13px 28px;border-radius:14px;font-weight:800;font-size:15px;cursor:pointer;border:0;transition:.2s}
+.btn-wa{background:#25d366;color:#fff}
+.btn-wa:hover{background:#1eb856}
+@media(max-width:820px){.main-nav{position:fixed;top:64px;right:0;left:0;background:var(--hdrbg,#12100d);flex-direction:column;padding:0;display:none;z-index:900}
+.main-nav.open{display:flex}
+.main-nav a{padding:14px 22px;border-top:1px solid rgba(255,255,255,.08)}}
