@@ -1,4 +1,5 @@
 var DEMO_MSG = 'نسخة تجريبية: الطلب والتواصل معطّلان في هذه المعاينة العامة. Demo preview: ordering and contact are disabled.';
+/* DEMO_GUARD */(function(){var _o=window.open;window.open=function(u){if(u&&String(u).indexOf('https://wa.me')===0){alert(DEMO_MSG);return null;}return _o.apply(window,arguments);};})();
 /* t2 «نسيم أخضر» — side-drawer nav with scrim + bottom-sheet cart. Event-delegation style. */
 const T2 = { wa: '', shop: "مشغل باهية خياطة", key: "cart_bahiya_tailor" };
 const state = { cart: JSON.parse(localStorage.getItem(T2.key) || "[]") };
@@ -65,7 +66,7 @@ document.body.addEventListener("click", (e) => {
 });
 q("#lbClose").addEventListener("click", () => q("#lightbox").classList.remove("open"));
 q("#lightbox").addEventListener("click", (e) => { if (e.target === e.currentTarget) e.currentTarget.classList.remove("open"); });
-q("#waFloat").addEventListener("click", () => (alert(DEMO_MSG),void 0)/* DEMO_GUARD */;
+q("#waFloat").addEventListener("click", () => window.open(`https://wa.me/${T2.wa}`, "_blank"));
 q("#orderForm").addEventListener("submit", (e) => {
   e.preventDefault();
   if (!state.cart.length) return ping("السلة فارغة");
@@ -75,6 +76,6 @@ q("#orderForm").addEventListener("submit", (e) => {
   const notes = q("#custNotes").value.trim();
   if (notes) msg += `\nملاحظات: ${notes}`;
   msg += "\n\n(الأسعار تقديرية وتؤكدونها عند الرد)";
-  (alert(DEMO_MSG),void 0)/* DEMO_GUARD */;
+  window.open(`https://wa.me/${T2.wa}?text=${encodeURIComponent(msg)}`, "_blank");
 });
 sync();

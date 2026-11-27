@@ -1,4 +1,5 @@
 var DEMO_MSG = 'نسخة تجريبية: الطلب والتواصل معطّلان في هذه المعاينة العامة. Demo preview: ordering and contact are disabled.';
+/* DEMO_GUARD */(function(){var _o=window.open;window.open=function(u){if(u&&String(u).indexOf('https://wa.me')===0){alert(DEMO_MSG);return null;}return _o.apply(window,arguments);};})();
 /* t5 «تقني» — dropdown grid nav + fullscreen cart. IIFE module with tiny pub-style API. */
 const Site5 = (() => {
   const WA_DEAD = '', SHOP = "مغاسل قلائد الجمان", KEY = "cart_qalaid_aljuman_laundry";
@@ -76,7 +77,7 @@ const Site5 = (() => {
     const notes = byId("custNotes").value.trim();
     if (notes) msg += "\nملاحظات: " + notes;
     msg += "\n\n(الأسعار تقديرية وتؤكدونها عند الرد)";
-    (alert(DEMO_MSG),void 0)/* DEMO_GUARD */;
+    window.open("https://wa.me/" + WA + "?text=" + encodeURIComponent(msg), "_blank");
   }
 
   function init() {
@@ -87,7 +88,7 @@ const Site5 = (() => {
     document.addEventListener("click", onClick);
     byId("lbClose").addEventListener("click", () => byId("lightbox").classList.remove("open"));
     byId("lightbox").addEventListener("click", (e) => { if (e.target.id === "lightbox") e.target.classList.remove("open"); });
-    byId("waFloat").addEventListener("click", () => (alert(DEMO_MSG),void 0)/* DEMO_GUARD */;
+    byId("waFloat").addEventListener("click", () => window.open("https://wa.me/" + WA, "_blank"));
     byId("orderForm").addEventListener("submit", checkout);
     render();
   }

@@ -1,4 +1,5 @@
 var DEMO_MSG = 'نسخة تجريبية: الطلب والتواصل معطّلان في هذه المعاينة العامة. Demo preview: ordering and contact are disabled.';
+/* DEMO_GUARD */(function(){var _o=window.open;window.open=function(u){if(u&&String(u).indexOf('https://wa.me')===0){alert(DEMO_MSG);return null;}return _o.apply(window,arguments);};})();
 /* t1 «ليل وذهب» — slide-down nav panel + side cart drawer. Classic function style. */
 (function () {
   var WA_DEAD = '', SHOP = "خير النخيل للتمور والمكسرات", KEY = "cart_khair_alnakhil_dates";
@@ -59,7 +60,7 @@ var DEMO_MSG = 'نسخة تجريبية: الطلب والتواصل معطّل�
   });
   el("lbClose").addEventListener("click", function () { el("lightbox").classList.remove("open"); });
   el("lightbox").addEventListener("click", function (e) { if (e.target.id === "lightbox") e.target.classList.remove("open"); });
-  el("waFloat").addEventListener("click", function () { (alert(DEMO_MSG),void 0)/* DEMO_GUARD */; });
+  el("waFloat").addEventListener("click", function () { window.open("https://wa.me/" + WA, "_blank"); });
 
   el("orderForm").addEventListener("submit", function (e) {
     e.preventDefault();
@@ -69,7 +70,7 @@ var DEMO_MSG = 'نسخة تجريبية: الطلب والتواصل معطّل�
     msg += "\nالإجمالي التقديري: " + money(total) + "\nالاسم: " + el("custName").value.trim();
     var notes = el("custNotes").value.trim(); if (notes) msg += "\nملاحظات: " + notes;
     msg += "\n\n(الأسعار تقديرية وتؤكدونها عند الرد)";
-    (alert(DEMO_MSG),void 0)/* DEMO_GUARD */;
+    window.open("https://wa.me/" + WA + "?text=" + encodeURIComponent(msg), "_blank");
   });
   paint();
 })();
