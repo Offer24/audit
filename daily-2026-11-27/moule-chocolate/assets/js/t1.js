@@ -2,7 +2,7 @@ var DEMO_MSG = 'نسخة تجريبية: الطلب والتواصل معطّل�
 /* DEMO_GUARD */(function(){var _o=window.open;window.open=function(u){if(u&&String(u).indexOf('https://wa.me')===0){alert(DEMO_MSG);return null;}return _o.apply(window,arguments);};})();
 /* t1 «ليل وذهب» — slide-down nav panel + side cart drawer. Classic function style. */
 (function () {
-  var WA_DEAD = '', SHOP = "مول Moule للشوكولاتة", KEY = "cart_moule_chocolate";
+  var WA_DEAD = '', SHOP = "ناظر تشوكلت", KEY = "cart_moule_chocolate";
   var cart = [];
   try { cart = JSON.parse(localStorage.getItem(KEY) || "[]"); } catch (e) {}
 
