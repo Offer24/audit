@@ -2,7 +2,7 @@
 :root{--bg:#fdf7f4;--panel:#ffffff;--ink:#46222b;--muted:#9a707a;--acc:#c94f6d;--acc2:#a63a55;--line:#f3dde2;--shadow:0 14px 34px rgba(201,79,109,.12);--hdrbg:#fdf7f4}
 body{background:var(--bg);color:var(--ink);font-family:'Tajawal',sans-serif}
 h1,h2,.display{font-family:'Aref Ruqaa',serif}
-.site-header{position:sticky;top:0;z-index:900;background:rgba(253,247,244,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.site-header{position:sticky;top:0;z-index:900;background:rgba(253,247,244,.94);border-bottom:1px solid var(--line)}
 .header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
 .logo{display:flex;align-items:center;gap:10px;font-size:19px;font-weight:700}
 .logo small{display:block;font-size:10px;letter-spacing:2px;color:var(--acc)}
