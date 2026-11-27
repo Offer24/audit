@@ -93,3 +93,12 @@ details p{color:var(--muted);margin-top:10px;font-size:14px}
 .step::before{counter-increment:st;content:counter(st);position:absolute;top:-14px;right:18px;background:var(--acc);color:#fff;width:30px;height:30px;display:grid;place-items:center;font-weight:800;border-radius:6px}
 .step h3{font-size:16px;margin:6px 0 6px}
 .step p{color:var(--muted);font-size:13px}
+
+
+/* T3 mobile: fullscreen overlay */
+@media(max-width:820px){
+.main-nav{position:fixed;inset:0;background:#0d0d0f;flex-direction:column;justify-content:center;padding:40px 8%;z-index:950;display:flex;visibility:hidden;opacity:0;transition:opacity .3s,visibility .3s}
+.main-nav.nav-full-open{visibility:visible;opacity:1}
+.main-nav a{font-size:24px;padding:14px 0;color:#fff;border-bottom:3px solid transparent;width:fit-content}
+.main-nav a.active{color:var(--acc2);border-color:var(--acc)}
+.menu-toggle{display:block;position:relative;z-index:960}}
