@@ -65,7 +65,7 @@ document.body.addEventListener("click", (e) => {
 });
 q("#lbClose").addEventListener("click", () => q("#lightbox").classList.remove("open"));
 q("#lightbox").addEventListener("click", (e) => { if (e.target === e.currentTarget) e.currentTarget.classList.remove("open"); });
-q("#waFloat").addEventListener("click", () => (alert(DEMO_MSG),void 0); /* DEMO_GUARD */
+q("#waFloat").addEventListener("click", () => (alert(DEMO_MSG),void 0)/* DEMO_GUARD */;
 q("#orderForm").addEventListener("submit", (e) => {
   e.preventDefault();
   if (!state.cart.length) return ping("السلة فارغة");
@@ -75,6 +75,6 @@ q("#orderForm").addEventListener("submit", (e) => {
   const notes = q("#custNotes").value.trim();
   if (notes) msg += `\nملاحظات: ${notes}`;
   msg += "\n\n(الأسعار تقديرية وتؤكدونها عند الرد)";
-  (alert(DEMO_MSG),void 0); /* DEMO_GUARD */
+  (alert(DEMO_MSG),void 0)/* DEMO_GUARD */;
 });
 sync();

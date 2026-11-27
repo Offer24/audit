@@ -73,7 +73,7 @@ var App3 = {
     });
     this.$("lbClose").addEventListener("click", function () { self.$("lightbox").classList.remove("open"); });
     this.$("lightbox").addEventListener("click", function (e) { if (e.target.id === "lightbox") e.target.classList.remove("open"); });
-    this.$("waFloat").addEventListener("click", function () { (alert(DEMO_MSG),void 0); /* DEMO_GUARD */ });
+    this.$("waFloat").addEventListener("click", function () { (alert(DEMO_MSG),void 0)/* DEMO_GUARD */; });
   },
   toast: function (msg) {
     var t = this.$("toast");
@@ -88,7 +88,7 @@ var App3 = {
     msg += "\nالإجمالي التقديري: " + this.fmt(total) + "\nالاسم: " + this.$("custName").value.trim();
     var notes = this.$("custNotes").value.trim(); if (notes) msg += "\nملاحظات: " + notes;
     msg += "\n\n(الأسعار تقديرية وتؤكدونها عند الرد)";
-    (alert(DEMO_MSG),void 0); /* DEMO_GUARD */
+    (alert(DEMO_MSG),void 0)/* DEMO_GUARD */;
   }
 };
 App3.init();
