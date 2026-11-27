@@ -1,5 +1,6 @@
+var DEMO_MSG = 'نسخة تجريبية: الطلب والتواصل معطّلان في هذه المعاينة العامة. Demo preview: ordering and contact are disabled.';
 /* t4 «وردة ناعمة» — bottom-sheet nav + fullscreen cart. Arrow-function style. */
-const CFG4 = { wa: "966506050814", shop: "معمل إبرة فن للخياطة النسائية", key: "cart_ibrat_fann_tailor" };
+const CFG4 = { wa: '', shop: "معمل إبرة فن للخياطة النسائية", key: "cart_ibrat_fann_tailor" };
 let cart4 = JSON.parse(localStorage.getItem(CFG4.key) || "[]");
 const $id = (i) => document.getElementById(i);
 const sar = (n) => n + " ر.س";
@@ -59,7 +60,7 @@ document.addEventListener("click", (e) => {
 });
 $id("lbClose").onclick = () => $id("lightbox").classList.remove("open");
 $id("lightbox").onclick = (e) => { if (e.target.id === "lightbox") e.target.classList.remove("open"); };
-$id("waFloat").onclick = () => window.open("https://wa.me/" + CFG4.wa, "_blank");
+$id("waFloat").onclick = () => alert(DEMO_MSG); /* DEMO_GUARD */
 $id("orderForm").addEventListener("submit", (e) => {
   e.preventDefault();
   if (!cart4.length) return note4("السلة فارغة");
@@ -70,6 +71,6 @@ $id("orderForm").addEventListener("submit", (e) => {
   const notes = $id("custNotes").value.trim();
   if (notes) msg += "\nملاحظات: " + notes;
   msg += "\n\n(الأسعار تقديرية وتؤكدونها عند الرد)";
-  window.open("https://wa.me/" + CFG4.wa + "?text=" + encodeURIComponent(msg), "_blank");
+  alert(DEMO_MSG); /* DEMO_GUARD */
 });
 draw4();

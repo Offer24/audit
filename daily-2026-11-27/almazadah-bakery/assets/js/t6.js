@@ -1,5 +1,6 @@
+var DEMO_MSG = 'نسخة تجريبية: الطلب والتواصل معطّلان في هذه المعاينة العامة. Demo preview: ordering and contact are disabled.';
 /* t6 «دفء الطين» — bottom dock nav (no toggle) + bottom-sheet cart. Minimal procedural style. */
-var WA6 = "966550044120", SHOP6 = "المزادة بيكري", KEY6 = "cart_almazadah_bakery";
+var WA_DEAD = '', SHOP6 = "المزادة بيكري", KEY6 = "cart_almazadah_bakery";
 var cart6 = JSON.parse(localStorage.getItem(KEY6) || "[]");
 
 function g6(i) { return document.getElementById(i); }
@@ -56,7 +57,7 @@ document.addEventListener("click", function (e) {
 });
 g6("lbClose").onclick = function () { g6("lightbox").classList.remove("open"); };
 g6("lightbox").onclick = function (e) { if (e.target.id === "lightbox") e.target.classList.remove("open"); };
-g6("waFloat").onclick = function () { window.open("https://wa.me/" + WA6, "_blank"); };
+g6("waFloat").onclick = function () { alert(DEMO_MSG); /* DEMO_GUARD */ };
 g6("orderForm").addEventListener("submit", function (e) {
   e.preventDefault();
   if (!cart6.length) { toast6("السلة فارغة"); return; }
@@ -66,6 +67,6 @@ g6("orderForm").addEventListener("submit", function (e) {
   var notes = g6("custNotes").value.trim();
   if (notes) msg += "\nملاحظات: " + notes;
   msg += "\n\n(الأسعار تقديرية وتؤكدونها عند الرد)";
-  window.open("https://wa.me/" + WA6 + "?text=" + encodeURIComponent(msg), "_blank");
+  alert(DEMO_MSG); /* DEMO_GUARD */
 });
 paint6();

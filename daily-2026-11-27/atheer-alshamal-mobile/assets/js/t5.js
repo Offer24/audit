@@ -1,6 +1,7 @@
+var DEMO_MSG = 'نسخة تجريبية: الطلب والتواصل معطّلان في هذه المعاينة العامة. Demo preview: ordering and contact are disabled.';
 /* t5 «تقني» — dropdown grid nav + fullscreen cart. IIFE module with tiny pub-style API. */
 const Site5 = (() => {
-  const WA = "966591999091", SHOP = "أثير الشمال للاتصالات", KEY = "cart_atheer_alshamal_mobile";
+  const WA_DEAD = '', SHOP = "أثير الشمال للاتصالات", KEY = "cart_atheer_alshamal_mobile";
   const store = {
     read() { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; } },
     write(v) { localStorage.setItem(KEY, JSON.stringify(v)); }
@@ -75,7 +76,7 @@ const Site5 = (() => {
     const notes = byId("custNotes").value.trim();
     if (notes) msg += "\nملاحظات: " + notes;
     msg += "\n\n(الأسعار تقديرية وتؤكدونها عند الرد)";
-    window.open("https://wa.me/" + WA + "?text=" + encodeURIComponent(msg), "_blank");
+    alert(DEMO_MSG); /* DEMO_GUARD */
   }
 
   function init() {
@@ -86,7 +87,7 @@ const Site5 = (() => {
     document.addEventListener("click", onClick);
     byId("lbClose").addEventListener("click", () => byId("lightbox").classList.remove("open"));
     byId("lightbox").addEventListener("click", (e) => { if (e.target.id === "lightbox") e.target.classList.remove("open"); });
-    byId("waFloat").addEventListener("click", () => window.open("https://wa.me/" + WA, "_blank"));
+    byId("waFloat").addEventListener("click", () => alert(DEMO_MSG); /* DEMO_GUARD */
     byId("orderForm").addEventListener("submit", checkout);
     render();
   }
