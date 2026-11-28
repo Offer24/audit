@@ -1,0 +1,23 @@
+{
+  "slug": "ag-coffee",
+  "business": "AG Coffee",
+  "vertical": "مقهى",
+  "city": "جدة",
+  "theme": "t8",
+  "theme_name": "بينتو",
+  "place_id": "ChIJE-GhXfDFwxURgmFrwj9nKfI",
+  "maps_url": "https://www.google.com/maps/search/?api=1&query=AG+Coffee&query_place_id=ChIJE-GhXfDFwxURgmFrwj9nKfI",
+  "phone": "+966 55 067 9175 ",
+  "wa": "966550679175",
+  "rating": 4.6,
+  "reviews": 2614,
+  "photos": 4,
+  "hours_recorded": false,
+  "live_url": "https://offer24.github.io/audit/daily-2026-11-28/ag-coffee/",
+  "needs_owner_confirmation": [
+    "الأسعار التقديرية (تُراجع وتُثبّت من المالك)",
+    "ساعات العمل",
+    "نص السياسات القانونية",
+    "رقم الواتساب وتفاصيل التوصيل"
+  ]
+}

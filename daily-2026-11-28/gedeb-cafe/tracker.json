@@ -1,0 +1,23 @@
+{
+  "slug": "gedeb-cafe",
+  "business": "قيدب",
+  "vertical": "مقهى",
+  "city": "الرياض",
+  "theme": "t10",
+  "theme_name": "ليل",
+  "place_id": "ChIJQ5uAKGoDLz4RSB3lDMF68z0",
+  "maps_url": "https://www.google.com/maps/search/?api=1&query=Gedeb&query_place_id=ChIJQ5uAKGoDLz4RSB3lDMF68z0",
+  "phone": "+966 50 210 0209 ",
+  "wa": "966502100209",
+  "rating": 4.3,
+  "reviews": 2466,
+  "photos": 7,
+  "hours_recorded": false,
+  "live_url": "https://offer24.github.io/audit/daily-2026-11-28/gedeb-cafe/",
+  "needs_owner_confirmation": [
+    "الأسعار التقديرية (تُراجع وتُثبّت من المالك)",
+    "ساعات العمل",
+    "نص السياسات القانونية",
+    "رقم الواتساب وتفاصيل التوصيل"
+  ]
+}

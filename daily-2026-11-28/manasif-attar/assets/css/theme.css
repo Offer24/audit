@@ -1,0 +1,60 @@
+/* t12 أرشيف — paper archive: ruled price table, index cards, contact-sheet gallery */
+:root{--font-head:"Noto Kufi Arabic",sans-serif;--font-body:"IBM Plex Sans Arabic",sans-serif;--ink:#1f2933;--bg:#f7f4ec;--acc:#6b4f2a;--line:#d8d0bd;--muted:#7c7462;--hdr-bg:#f7f4ec;--mark-bg:#6b4f2a;--mark-r:3px;--btn-r:3px;--cart-bg:#fbf9f3;--cart-foot:#efe9da;--foot-bg:#1f2933;--foot-ink:#efece2;--foot-head:#9aa2ab}
+.brand .mark{color:#f7f4ec}
+.main-nav{display:flex;gap:16px;font-size:13.5px}
+.main-nav a{padding:5px 0;border-bottom:1px solid transparent;font-weight:600}
+.main-nav a.active,.main-nav a:hover{border-color:var(--acc);color:var(--acc)}
+.hero{padding:44px 0 30px}
+.hero-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:34px;align-items:start}
+.hero .tag{display:inline-block;background:#efe9da;border:1px solid var(--line);padding:4px 10px;font-size:12px;letter-spacing:.14em;color:var(--acc);margin-bottom:16px}
+.hero h1{font-size:clamp(28px,4.2vw,46px);letter-spacing:-.6px;line-height:1.2;margin-bottom:14px}
+.hero-lead{font-size:16px;color:#3d4650}
+.hero-facts{margin-top:22px;border-top:1px solid var(--line)}
+.hero-facts div{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--line);font-size:14px}
+.hero-facts b{font-weight:700}
+.hero-shot{border:1px solid var(--line);background:#fff;padding:10px}
+.hero-shot img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.hero-shot .cap{font-size:11.5px;color:var(--muted);padding-top:8px;letter-spacing:.06em}
+section{padding:44px 0}
+.sec-bar{display:flex;align-items:center;gap:14px;margin-bottom:20px;border-bottom:2px solid var(--ink);padding-bottom:8px}
+.sec-bar h2{font-size:clamp(20px,2.6vw,27px);margin:0;letter-spacing:-.3px}
+.sec-bar .code{margin-inline-start:auto;font-family:ui-monospace,monospace;font-size:11.5px;color:var(--muted);letter-spacing:.16em}
+table.price{width:100%;border-collapse:collapse;font-size:14.5px;background:#fff;border:1px solid var(--line)}
+table.price th{background:#efe9da;text-align:right;font-size:12px;letter-spacing:.12em;color:var(--acc);padding:9px 12px;font-weight:700}
+table.price td{padding:12px;border-top:1px solid var(--line);vertical-align:top}
+table.price td.no{font-family:ui-monospace,monospace;color:var(--muted);width:44px;font-size:12.5px}
+table.price td.nm{font-weight:700}
+table.price td.ds{color:#4a5460;font-size:13.6px}
+table.price td.pr{white-space:nowrap;font-family:ui-monospace,monospace;font-weight:700;color:var(--acc)}
+table.price td.act{width:88px;text-align:center}
+table.price .add{border:1px solid var(--acc);color:var(--acc);padding:5px 10px;font-size:12.5px;border-radius:2px}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.icard{background:#fff;border:1px solid var(--line);padding:18px;position:relative}
+.icard .k{font-family:ui-monospace,monospace;font-size:11px;color:var(--muted);letter-spacing:.14em}
+.icard h3{font-size:15.5px;margin:8px 0 6px}
+.icard p{font-size:13.5px;color:#4a5460;margin:0}
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;background:#fff;border:1px solid var(--line);padding:10px}
+.gallery figure{margin:0;cursor:zoom-in}
+.gallery img{width:100%;aspect-ratio:1/1;object-fit:cover;border:1px solid var(--line)}
+.gallery figcaption{font-family:ui-monospace,monospace;font-size:10.5px;color:var(--muted);padding-top:5px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.hours-t{width:100%;border-collapse:collapse;font-size:14px}
+.hours-t td{padding:8px 0;border-bottom:1px solid var(--line)}
+.hours-t td:last-child{text-align:left;font-family:ui-monospace,monospace;font-size:13px}
+.faq details{border-bottom:1px solid var(--line);padding:13px 0}
+.faq summary{font-weight:700;font-size:15px;cursor:pointer;list-style:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq p{margin:9px 0 0;font-size:14px;color:#4a5460}
+.contact-strip{border:1px solid var(--line);background:#fff;padding:24px;display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between;margin-top:10px}
+.contact-strip .big{font-family:ui-monospace,monospace;font-size:20px;color:var(--acc)}
+.cart-panel{inset-block-end:0;inset-inline:0;max-height:88vh;transform:translateY(102%);border-top:3px solid var(--ink)}
+.cart-panel.on{transform:translateY(0)}
+@media(max-width:860px){
+ .hero-grid,.two{grid-template-columns:1fr}
+ .cards{grid-template-columns:1fr 1fr}
+ .gallery{grid-template-columns:1fr 1fr}
+ table.price td.ds{display:none}
+ .main-nav{position:fixed;inset-block-start:64px;inset-inline:0;background:var(--bg);flex-direction:column;gap:0;padding:6px 5vw 16px;display:none;z-index:59;border-bottom:1px solid var(--line)}
+ .main-nav.open{display:flex}
+ .main-nav a{padding:13px 0;border-bottom:1px solid var(--line);font-size:15px}
+}

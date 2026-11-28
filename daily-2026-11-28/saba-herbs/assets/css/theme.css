@@ -1,0 +1,57 @@
+/* t10 ليل — dark luxe minimal: thin gold rules, mono labels, centered hero */
+:root{--font-head:"Cairo",sans-serif;--font-body:"Cairo",sans-serif;--ink:#efeae2;--bg:#0d0d0f;--acc:#c8a45c;--line:#26262b;--muted:#8d8880;--hdr-bg:rgba(13,13,15,.92);--mark-bg:#1a1a1f;--mark-r:50%;--btn-r:0px;--cart-bg:#141418;--cart-foot:#1a1a20;--foot-bg:#08080a;--foot-ink:#ded8ce;--foot-head:#7d7870}
+.brand .mark{color:var(--acc);border:1px solid var(--line)}
+.main-nav{display:flex;gap:22px;font-size:13px;letter-spacing:.06em}
+.main-nav a{color:#cfc9c0;padding:6px 0;border-bottom:1px solid transparent}
+.main-nav a:hover,.main-nav a.active{color:var(--acc);border-color:var(--acc)}
+.mono{font-family:ui-monospace,"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--acc)}
+.hero{padding:74px 0 40px;text-align:center;border-bottom:1px solid var(--line)}
+.hero .mono{margin-bottom:20px;display:block}
+.hero h1{font-size:clamp(30px,5vw,58px);font-weight:700;letter-spacing:-.6px;margin:0 auto 18px;max-width:22ch}
+.hero-lead{max-width:56ch;margin:0 auto;color:#b9b3aa;font-size:16px}
+.hero-figure{margin:38px auto 0;max-width:920px;position:relative}
+.hero-figure img{width:100%;aspect-ratio:21/9;object-fit:cover;filter:grayscale(.25) contrast(1.05)}
+.hero-figure::after{content:"";position:absolute;inset:0;border:1px solid rgba(200,164,92,.35);pointer-events:none}
+.hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:32px}
+.btn-primary{background:var(--acc);color:#0d0d0f}
+.btn-outline{border-color:var(--acc);color:var(--acc)}
+section{padding:64px 0;border-bottom:1px solid var(--line)}
+.sec-head{text-align:center;margin-bottom:38px}
+.sec-head h2{font-size:clamp(22px,3vw,34px);font-weight:600;letter-spacing:-.3px}
+.sec-head .mono{display:block;margin-bottom:10px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line)}
+.cell{background:var(--bg);padding:28px 24px}
+.cell .n{font-family:ui-monospace,monospace;color:var(--acc);font-size:12px;letter-spacing:.2em}
+.cell h3{font-size:16.5px;margin:12px 0 8px;font-weight:600}
+.cell p{font-size:14px;color:#a9a39a;margin:0}
+.menu{display:grid;grid-template-columns:1fr 1fr;gap:0 48px}
+.mrow{display:grid;grid-template-columns:1fr auto;gap:14px;padding:18px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.mrow h3{font-size:16px;margin:0;font-weight:600}
+.mrow p{font-size:13.5px;color:#8f8a82;margin:5px 0 0}
+.mrow .p{font-family:ui-monospace,monospace;color:var(--acc);font-size:15px;white-space:nowrap}
+.mrow .add{font-size:12px;color:var(--acc);border:1px solid var(--line);padding:5px 10px;margin-top:8px}
+.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.gallery figure{margin:0;position:relative;cursor:zoom-in;overflow:hidden}
+.gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;filter:grayscale(.2);transition:filter .3s,transform .5s}
+.gallery figure:hover img{filter:none;transform:scale(1.03)}
+.gallery figcaption{font-family:ui-monospace,monospace;font-size:11px;letter-spacing:.16em;color:var(--muted);padding-top:8px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+.hours-t{width:100%;border-collapse:collapse;font-size:14px}
+.hours-t td{padding:9px 0;border-bottom:1px solid var(--line);color:#c5bfb6}
+.hours-t td:last-child{text-align:left;font-family:ui-monospace,monospace;color:var(--acc);font-size:13px}
+.faq details{border-bottom:1px solid var(--line);padding:16px 0}
+.faq summary{font-size:15px;cursor:pointer;list-style:none;color:#e7e1d8}
+.faq summary::-webkit-details-marker{display:none}
+.faq p{margin:10px 0 0;font-size:14px;color:#a9a39a}
+.contact{text-align:center;padding:56px 0}
+.contact .tel{display:inline-block;font-size:clamp(20px,3vw,30px);color:var(--acc);margin:10px 0 22px;letter-spacing:.02em}
+.cart-panel{inset-block-end:0;inset-inline:0;max-height:90vh;transform:translateY(102%);border-top:1px solid var(--acc)}
+.cart-panel.on{transform:translateY(0)}
+@media(max-width:860px){
+ .grid-3{grid-template-columns:1fr}
+ .menu,.two-col{grid-template-columns:1fr;gap:0}
+ .gallery{grid-template-columns:1fr}
+ .main-nav{position:fixed;inset-block-start:64px;inset-inline:0;background:#0d0d0f;flex-direction:column;gap:0;padding:6px 6vw 18px;display:none;z-index:59;border-bottom:1px solid var(--line)}
+ .main-nav.open{display:flex}
+ .main-nav a{padding:14px 0;border-bottom:1px solid var(--line);font-size:15px}
+}
