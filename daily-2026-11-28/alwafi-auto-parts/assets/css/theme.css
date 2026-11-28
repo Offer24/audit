@@ -9,8 +9,8 @@
 @keyframes slide{from{transform:translateX(-50%)}to{transform:translateX(0)}}
 .hero{padding:40px 0 20px}
 .hero-card{background:#fff;border:3px solid var(--ink);border-radius:22px;box-shadow:8px 8px 0 var(--ink);padding:clamp(20px,3vw,38px);display:grid;grid-template-columns:1.1fr .9fr;gap:26px;align-items:center}
-.hero h1{font-size:clamp(30px,4.6vw,54px);line-height:1.1;margin:0 0 12px}
-.hero h1 .hl{background:var(--acc-2);padding:0 6px;border-radius:8px;box-decoration-break:clone}
+.hero h1{font-size:clamp(30px,4.6vw,54px);line-height:1.28;margin:0 0 12px}
+.hero h1 .hl{background:var(--acc-2);padding:3px 10px;border-radius:8px;box-decoration-break:clone;-webkit-box-decoration-break:clone;display:inline-block;line-height:1.5;margin-top:4px}
 .hero-lead{font-size:16.5px;color:#333;max-width:44ch}
 .sticker{display:inline-block;background:var(--acc);color:#fff;font-weight:800;font-size:12.5px;padding:6px 12px;border-radius:99px;transform:rotate(-3deg);border:2px solid var(--ink);margin-bottom:14px}
 .hero-img{border:3px solid var(--ink);border-radius:18px;overflow:hidden;aspect-ratio:1/1}
